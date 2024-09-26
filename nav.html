@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
+
+  
+
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <span class="navbar-brand">Navbar</span>
@@ -26,12 +29,28 @@
   </ul> 
 
   
+  <button id="btn-modal">모달창</button>
+  <div class="black-bg">
+    <div class="white-bg">
+      <h4>로그인하세요</h4>
+      <button class="btn btn-danger" id="close">닫기</button>
+    </div>
+  </div> 
+
 
   <script>
-
     document.getElementsByClassName("navbar-toggler")[0].addEventListener("click", function(){
       document.getElementsByClassName("list-group")[0].classList.toggle("show");
     });
+
+    document.getElementById("btn-modal").addEventListener("click", function(){
+      console.log(123)
+      document.getElementsByClassName("black-bg")[0].classList.add("show")
+    });
+
+    document.getElementById("close").addEventListener("click", function(){
+      document.getElementsByClassName("black-bg")[0].classList.remove("show")
+    })
   
   </script>
 
