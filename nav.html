@@ -9,7 +9,13 @@
 </head>
 <body>
 
-  
+  <button id="btn-modal">모달창</button>
+  <div class="black-bg">
+    <div class="white-bg">
+      <h4>로그인하세요</h4>
+      <button class="btn btn-danger" id="close">닫기</button>
+    </div>
+  </div> 
 
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
@@ -28,30 +34,32 @@
     <li class="list-group-item">And a fifth one</li>
   </ul> 
 
-  
-  <button id="btn-modal">모달창</button>
-  <div class="black-bg">
-    <div class="white-bg">
-      <h4>로그인하세요</h4>
-      <button class="btn btn-danger" id="close">닫기</button>
-    </div>
-  </div> 
-
-
   <script>
+    /* nav */
     document.getElementsByClassName("navbar-toggler")[0].addEventListener("click", function(){
       document.getElementsByClassName("list-group")[0].classList.toggle("show");
     });
 
+    /* 모달 - visibility*/
     document.getElementById("btn-modal").addEventListener("click", function(){
-      console.log(123)
-      document.getElementsByClassName("black-bg")[0].classList.add("show")
+      document.querySelector(".black-bg").classList.add("show");
     });
 
     document.getElementById("close").addEventListener("click", function(){
-      document.getElementsByClassName("black-bg")[0].classList.remove("show")
-    })
+      document.querySelector(".black-bg").classList.remove("show");
+    });
   
+
+    /* 모달 - display로 처리*/ 
+    /*document.getElementById("btn-modal").addEventListener("click", function(){
+      document.querySelector(".black-bg").style.display = "block";  // display를 block으로 전환
+      setTimeout(() => blackBg.classList.add("show"), 10);  // opacity 애니메이션을 적용하기 위해 약간의 딜레이
+    });
+
+    document.getElementById("close").addEventListener("click", function(){
+      document.querySelector(".black-bg").classList.remove("show");
+      setTimeout(() => blackBg.style.display = "none", 1000);  // transition이 끝난 후 display를 none으로 설정
+    });*/
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
