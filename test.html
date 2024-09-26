@@ -6,6 +6,70 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <script>
+    /* 삼육구게임*/
+    삼육구게임(2);
+    function 삼육구게임(q){
+      if(q % 3 === 0){
+        console.log("박수")
+      } else {
+        console.log("통과")
+      }
+    }
+
+    /*const 삼육구 = (num) => {
+      num % 3 === 0 ? console.log("박수") : console.log("통과")
+    }
+    삼육구(12);*/
+
+
+    const 삼육구게임2 = (num) => {
+      if(num % 9 === 0 ){
+        console.log("박수x2");
+      } else if(num % 3 === 0){
+        console.log("박수");
+      } else {
+        console.log("통과");
+      }
+    }
+    삼육구게임2(18);
+
+    const 삼육구게임3 = (q) => {
+      const lastDigit = q % 10; // 끝자리를 구함
+      if (lastDigit === 3 || lastDigit === 6 || lastDigit === 9) {
+        console.log("박수");
+      } else {
+        console.log("통과");
+      }
+    };
+    
+    // 예시 호출
+   삼육구게임3(13); // "박수"
+   삼육구게임3(16); // "박수"
+   삼육구게임3(20); // "통과"
+   삼육구게임3(29); // "박수"
+
+
+    const pass = (a, b) =>{
+      if(a + b >= 120 && (a >= 40 && b >=40)){
+        console.log("합격");
+      } else {
+        console.log("불합격")
+      }
+    } 
+    pass(39, 100);
+
+    const pass2 = (a, b) => {
+      if(a < 40 || b < 40){
+        console.log("불합격");
+      } else if (a + b >= 120){
+        console.log("합격");
+      } else {
+        console.log("불합격")
+      }
+    }
+    pass2(100, 40);
+
+  </script>
 </body>
 </html>

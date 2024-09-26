@@ -21,3 +21,4 @@ body {position: relative;}
 .black-bg.show {display: block; visibility: visible; opacity: 1;}
 
 .main-bg {padding: 100px 20px; background-color: #ddd;}
+.dark {background-color: #000; color: #fff;}
