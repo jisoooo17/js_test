@@ -22,12 +22,40 @@
     /*function alertOpen(){
       document.getElementById('alert').style.display= 'block';
     }
-    
 
     function alertClose(){
       document.getElementById('alert').style.display='none'
     }
     */
+  </script>
+
+
+
+
+<br><br><br><br><br><br>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+  <div class="alert-box2" id="alert2">
+    <p id="txt">알림창</p>
+    <button onclick="alertId('none')">닫기</button>
+  </div>
+
+  <button id="btn1" onclick="alertId('block')">버튼1</button>  
+  <button id="btn2" onclick="alertPw('block')">버튼2</button>
+
+
+  <script>
+    function alertId(구멍){
+      document.getElementById("alert2").style.display = 구멍;
+      document.getElementById("txt").innerHTML = "아이디를 입력하세요."
+    }
+    function alertPw(구멍){
+      document.getElementById("alert2").style.display = 구멍;
+      document.getElementById("txt").innerHTML = "비밀번호를 입력하세요."
+    }
+    
   </script>
 </body>
 </html>
