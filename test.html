@@ -9,13 +9,25 @@
 <body>
   
   <div class="alert-box" id="alert">알림창 
-    <button id="close" onclick="document.getElementById('alert').style.display='none'">닫기</button>
+    <button id="close" onclick="alertOpen('none')">닫기</button>
   </div>
-  <button class="btn" onclick="document.getElementById('alert').style.display='block'">버튼</button>
+  <button class="btn" onclick="alertOpen('block')">버튼</button>
 
 
   <script>
+    function alertOpen(구멍){
+      document.getElementById('alert').style.display= 구멍;
+    }
 
+    /*function alertOpen(){
+      document.getElementById('alert').style.display= 'block';
+    }
+    
+
+    function alertClose(){
+      document.getElementById('alert').style.display='none'
+    }
+    */
   </script>
 </body>
 </html>
