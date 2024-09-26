@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  
+  <div class="alert-box" id="alert">알림창 
+    <button id="close" onclick="alertOpen('none')">닫기</button>
+  </div>
+  <button class="btn" onclick="alertOpen('block')">버튼</button>
+
+
+  <script>
+    function alertOpen(구멍){
+      document.getElementById('alert').style.display= 구멍;
+    }
+
+    /*function alertOpen(){
+      document.getElementById('alert').style.display= 'block';
+    }
+
+    function alertClose(){
+      document.getElementById('alert').style.display='none'
+    }
+    */
+  </script>
+
+
+
+
+<br><br><br><br><br><br>
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+  <!-- 복잡하면 상세히 한글부터 짜고 코드로 옮기기 -->
+  <!-- 1. p태그 내용을 "아이디를 입력하세요."로 바꿈 -->
+  <!-- 2. 띄움 -->
+
+
+  <!-- <div class="alert-box2" id="alert2">
+    <p id="txt">알림창</p>
+    <button id="btn-close">닫기</button>
+  </div>
+
+  <button id="btn1" onclick="alertId('block')">버튼1</button>  
+  <button id="btn2" onclick="alertPw('block')">버튼2</button>
+
+
+  <script>
+
+    document.getElementById("btn-close").addEventListener("click", function(){
+      document.getElementById("alert2").style.display = "none";
+    });
+
+    
+
+    function alertId(구멍){
+      document.getElementById("alert2").style.display = 구멍;
+      document.getElementById("txt").innerHTML = "아이디를 입력하세요."
+    }
+    function alertPw(구멍){
+      document.getElementById("alert2").style.display = 구멍;
+      document.getElementById("txt").innerHTML = "비밀번호를 입력하세요."
+    }
+  </script>  -->
+
+
+
+  <div class="alert-box2" id="alert2">
+    <p id="txt">알림창</p>
+    <button id="btn-close">닫기</button>
+  </div>
+
+  <button id="btn1" onclick="alertBox2('block', '아이디')">버튼1</button>  
+  <button id="btn2" onclick="alertBox2('block', '비밀번호')">버튼2</button>
+
+  <script>
+    document.getElementById("btn-close").addEventListener("click", function(){
+      document.getElementById("alert2").style.display = "none";
+    });
+
+    function alertBox2(구멍, 텍스트){
+      document.getElementById("alert2").style.display = 구멍;
+      document.getElementById("txt").innerText = 텍스트 + "를 입력하세요."
+    }
+  </script>
+</body>
+</html>
