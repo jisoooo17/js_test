@@ -131,5 +131,42 @@
       
     })
   </script>
+
+    <!-- 함수  -->
+    <script>
+      function 함수(){
+        return 123;
+      }
+      let 변수 = 함수();
+      console.log(변수);
+  
+  
+      // 부가세 계산
+      function vat(a){
+        let num = (a * 1.1).toFixed(2);
+        return parseFloat(num);
+      }
+      console.log(vat(50000));
+  
+  
+      // ms 계산
+      function msSec(min, sec){
+        let ms = ((min * 60 + sec)) * 1000; 
+        console.log(ms);
+      } 
+      msSec(1, 30);
+  
+      // 가격
+      function sale(price, first){
+        let total = price * .9;
+        if(first){
+          total = total - 1.5
+        }
+        return parseFloat(total.toFixed(2));
+      }
+      console.log(sale(10,true))
+  
+  
+    </script>
 </body>
 </html>
