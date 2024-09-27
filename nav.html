@@ -294,14 +294,39 @@
     // 스크롤 끝까지 내리면 이벤트 발생
     document.querySelector(".scl-box").addEventListener("scroll", function(){
       let sclTop = parseInt(document.querySelector(".scl-box").scrollTop);
+      let boxHt = document.querySelector(".scl-box").clientHeight; // 박스 높이
       let sclHt = document.querySelector(".scl-box").scrollHeight; // 스크롤 높이
-      let boxHt = document.querySelector(".scl-box").clientHeight;
 
+      // 스크롤바 내린양 + 노출된 div의 스크롤 높이 == div 실제높이
       if(sclTop + boxHt >= sclHt){
         alert("스크롤 끝!");
       }
     });
     
+    // 현재 페이지 끝까지 스크롤 체크
+    // documentElement === querySelector("html")
+    let alertShown = false; // 알림이 이미 표시되었는지 체크
+    let lastScrollY = window.scrollY; // 마지막 스크롤 위치를 저장하는 변수
+
+    document.addEventListener("scroll", function() {
+      let pageTop = parseInt(window.scrollY); // 현재 페이지 스크롤 양
+      let curPageHt = document.documentElement.clientHeight; // 페이지 보이는 부분 높이
+      let pageHt = document.documentElement.scrollHeight; // 현재 페이지 실제 높이
+
+      // 페이지 끝에 도달했는지 확인
+      if (pageTop + curPageHt >= pageHt - 10 && !alertShown && pageTop > lastScrollY) {
+        alert("페이지 끝");
+        alertShown = true; // 알림 표시 후 플래그를 true로 설정
+      }
+
+      // 업스크롤할 때 플래그 초기화
+      if (pageTop < lastScrollY) {
+        alertShown = false; // 업스크롤하면 플래그 초기화
+      }
+
+      // 현재 스크롤 위치를 마지막 스크롤 위치로 업데이트
+      lastScrollY = pageTop; 
+    });
   </script>
 
 
