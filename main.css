@@ -1,4 +1,10 @@
+/* 스크롤 스무스하게하는거 막아줌 */
+/* :root {scroll-behavior: auto;}  */
+
 body {position: relative;}
+
+.navbar {position: fixed; width: 100%; z-index: 1;}
+.navbar-brand {font-size: 30px; transition: all .5s;}
 
 .alert-box {display: none; padding: 20px; background-color: skyblue; color: #fff; border-radius: 5px;}
 .alert-box2 {display: none; padding: 20px; background-color: palevioletred; color: #fff; border-radius: 5px; z-index: 1;}
@@ -19,6 +25,7 @@ body {position: relative;}
   padding: 30px;
 } 
 .black-bg.show {display: block; visibility: visible; opacity: 1;}
+#btn-modal {position: absolute; top: 80px;}
 
 .main-bg {padding: 100px 20px; background-color: #ddd;}
 .dark {background-color: #000; color: #fff;}

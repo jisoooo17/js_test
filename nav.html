@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body style="min-height: 2000px;">
 
   <button id="btn-modal">모달창</button>
   <div class="black-bg">
@@ -78,6 +78,12 @@
   <div class="alert alert-danger">
     <span class="timer">5</span>초 이내 구매시 사은품 증정
   </div>
+
+
+  <div class="scl-box" style="width: 100%; height: 100px; overflow-y: scroll">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus labore perspiciatis. Beatae nam provident praesentium, ex laudantium quidem voluptas impedit harum rerum explicabo corrupti, et nesciunt eligendi tenetur, eos laboriosam nemo eum eaque ratione labore repellendus. Suscipit animi molestias commodi earum exercitationem reprehenderit nam veritatis explicabo soluta odio? Ducimus nulla sunt itaque beatae quis! Facere dolorem doloribus, voluptatem illum in repellat? Est dignissimos facere ullam, nostrum magni ut sit modi maiores vero? Tenetur aliquid, hic velit non labore doloribus ex adipisci molestias neque ad, enim voluptates mollitia? Aperiam qui expedita ipsum laudantium reprehenderit velit voluptatem exercitationem eos sunt vero?
+  </div>
+
 
   <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
@@ -273,7 +279,30 @@
     });
   </script>
 
-  
+  <!-- 스크롤 이벤트 -->
+  <script>
+    // 스크롤 100 이상이면 nav 폰트 줄이기
+    window.addEventListener("scroll", function(){
+      if(parseInt(window.scrollY) >= 100){
+        document.querySelector(".navbar-brand").style.fontSize = "20px"
+      } else {
+        document.querySelector(".navbar-brand").style.fontSize = "30px"
+      }
+    });
+
+
+    // 스크롤 끝까지 내리면 이벤트 발생
+    document.querySelector(".scl-box").addEventListener("scroll", function(){
+      let sclTop = parseInt(document.querySelector(".scl-box").scrollTop);
+      let sclHt = document.querySelector(".scl-box").scrollHeight; // 스크롤 높이
+      let boxHt = document.querySelector(".scl-box").clientHeight;
+
+      if(sclTop + boxHt >= sclHt){
+        alert("스크롤 끝!");
+      }
+    });
+    
+  </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
