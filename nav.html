@@ -102,7 +102,6 @@
       document.querySelector(".black-bg").classList.remove("show");
     });
   
-
     /* 모달 - display로 처리*/ 
     /*document.getElementById("btn-modal").addEventListener("click", function(){
       document.querySelector(".black-bg").style.display = "block";  // display를 block으로 전환
@@ -113,6 +112,23 @@
       document.querySelector(".black-bg").classList.remove("show");
       setTimeout(() => blackBg.style.display = "none", 1000);  // transition이 끝난 후 display를 none으로 설정
     });*/
+
+
+
+    /* 이벤트 버블링 방지 */
+    // bg 클릭 시 모달 닫기 - 
+    document.querySelector(".black-bg").addEventListener("click", function(e){
+      if(e.target == document.querySelector(".black-bg")){
+        document.querySelector(".black-bg").classList.remove("show");
+      }
+    });
+
+    /*
+      e.target; // 유저가 실제로 누른거
+      e.currentTarget; // 이벤트 리스너 달린곳 (this)
+      e.preventDefault(); // 이벤트 기본동작 막아줌
+      e.stopPropagation(); // 이벤트 버블링 막아줌
+    */
   </script>
 
   <!-- 인풋 공백검사 & 이메일 유효성 -->
@@ -147,7 +163,7 @@
     
     // 이메일 유효성
     // 모든문자 @ 모든문자 . 모든문자
-    console.log(/\S+@\S+\.\S+/.test("aaa@bbb.com"));
+    // console.log(/\S+@\S+\.\S+/.test("aaa@bbb.com"));
 
       
 

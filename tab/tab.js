@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+  for(var i = 0; i < 3; i++){
+    console.log(213)
+  }
 
   // document.querySelectorAll(".tab-button")[0].addEventListener("click", function(){
   //   document.querySelectorAll(".tab-button")[0].classList.add("orange");
