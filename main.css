@@ -22,3 +22,8 @@ body {position: relative;}
 
 .main-bg {padding: 100px 20px; background-color: #ddd;}
 .dark {background-color: #000; color: #fff;}
+
+.slide-w {overflow: hidden; position: relative;}
+.slide-container {width: 300vw; transition: all .5s;}
+.slide-box {width: 100vw; float: left;}
+.slide-box img {width: 100%;}

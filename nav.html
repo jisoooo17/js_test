@@ -54,8 +54,35 @@
     <span class="timer">5</span>초 이내 구매시 사은품 증정
   </div>
 
+  <!-- 캐러셀(슬라이드) -->
+  <div class="slide-w">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="./img/car1.png" alt="">
+      </div>
+      <div class="slide-box">
+        <img src="./img/car2.png" alt="">
+      </div>
+      <div class="slide-box">
+        <img src="./img/car3.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="btn-w">
+    <button class="slide1 slide">1</button>
+    <button class="slide2 slide">2</button>
+    <button class="slide3 slide">3</button>
+  </div>
+  <div class="btn-w">
+    <button class="btn-prev">이전</button>
+    <button class="btn-next">디음</button>
+  </div>
+  
+
+  <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+  <!-- nav -->
   <script>
-    /* nav */
     document.getElementsByClassName("navbar-toggler")[0].addEventListener("click", function(){
       document.getElementsByClassName("list-group")[0].classList.toggle("show");
     });
@@ -82,24 +109,46 @@
     });*/
   </script>
 
+  <!-- 인풋 공백검사 & 이메일 유효성 -->
   <script>
     // 전송 버튼 누르면 
     // 저기 input에 입력한 값이 공백이면 alert 띄움
     document.querySelector("form").addEventListener("submit", function(e){
-      if(document.getElementById("email").value.trim() == "" || document.getElementById("pw").value.trim() == ""){
+      let userEmail = document.getElementById("email").value; 
+      let userPw = document.getElementById("pw").value
+      if(userEmail.trim() == ""){
         e.preventDefault();
         alert("값을 입력하세요.");
       }
-      if(document.getElementById("pw").value.trim().length < 6){
+
+      if( !/\S+@\S+\.\S+/.test(userEmail)){
+        e.preventDefault();
+        alert("이메일 형식이 맞지 않습니다.");
+      }
+      
+
+      if(userPw.trim().length < 6){
         alert("6자 이상 입력하세요.");
         e.preventDefault();
       }
-    })
+
+      console.log(userPw)
+      if(!/[A-Z]/.test(userPw)){
+        e.preventDefault();
+        alert("대문자하나 포함");
+      }
+    });
+    
+    // 이메일 유효성
+    // 모든문자 @ 모든문자 . 모든문자
+    console.log(/\S+@\S+\.\S+/.test("aaa@bbb.com"));
+
+      
 
   </script>
 
+  <!-- input 이벤트 -->
   <script>
-    /*input 이벤트*/
     // input은 값이 바뀔때 마다 실행 
     // change는 인풋의 포커스를 잃을때 실행
     /*document.getElementById("email").addEventListener("input", function(){
@@ -107,8 +156,8 @@
     });*/
   </script>
 
+  <!-- 다크모드 버튼  -->
   <script>
-    /* 다크모드 버튼 */
     // badge 홀수번 클릭 시 버튼 내부 텍스트 Light로 변경, 짝수번 클릭 시 Dark로 변경
     // 클릭 횟수 저장 변수 추가
 
@@ -125,12 +174,11 @@
   </script>
 
 
+  <!-- 타이머 -->
   <script>
-    // 타이머
     let count = 5;
     const timer = setInterval(()=>{
       count--;
-      console.log(count)
       document.querySelector(".timer").innerHTML = count;
 
       if(count == 0){
@@ -154,6 +202,80 @@
     
   </script>
 
+
+  <!-- 캐러셀 (슬라이드) -->
+  <script>
+    // 숫자버튼
+    /*document.querySelector(".slide1").addEventListener("click", function(){
+      document.querySelector(".slide-container").style.transform = "translateX(0)"
+    });
+    document.querySelector(".slide2").addEventListener("click", function(){
+      document.querySelector(".slide-container").style.transform = "translateX(-100vw)"
+    });
+    document.querySelector(".slide3").addEventListener("click", function(){
+      document.querySelector(".slide-container").style.transform = "translateX(-200vw)"
+    });*/
+
+
+    // 다음 버튼
+    // 다음 버튼 누르면 지금 보이는 사진이1이면 2번사진 보여주세요
+    // 지금 보이는 사진이 2이면 3번사진 보여주세요
+    /*let slideNum = 1;
+    document.querySelector(".btn-next").addEventListener("click", function(){
+      if(slideNum == 1){
+        slideNum++;
+        document.querySelector(".slide-container").style.transform = "translateX(-100vw)";
+      } else if( slideNum == 2){
+        slideNum++;
+        document.querySelector(".slide-container").style.transform = "translateX(-200vw)";
+      }
+      console.log(slideNum)
+    });
+
+    // 이전 버튼
+    document.querySelector(".btn-prev").addEventListener("click", function(){
+      if(slideNum == 3){
+        slideNum--;
+        document.querySelector(".slide-container").style.transform = "translateX(-100vw)"
+      } else if (slideNum == 2){
+        slideNum--;
+        document.querySelector(".slide-container").style.transform = "translateX(0)"
+      }
+      console.log(slideNum)
+    });*/
+
+    let slideNum = 0;
+    let totalNum = document.querySelectorAll(".slide-box").length - 1;
+    // console.log(document.querySelectorAll(".slide-box").length)
+    document.querySelector(".btn-next").addEventListener("click", function(){
+      if(slideNum < totalNum){
+        slideNum++;
+        document.querySelector(".slide-container").style.transform = `translateX(-${slideNum * 100}vw)`;
+      } 
+    });
+
+    document.querySelector(".btn-prev").addEventListener("click", function(){
+      
+      if(slideNum > 0){
+        console.log(slideNum)
+        slideNum--;
+        document.querySelector(".slide-container").style.transform = `translateX(-${slideNum * 100}vw)`;
+      }
+    });
+
+
+    // 숫자 버튼 클릭 시 슬라이드 이동
+    document.querySelectorAll(".slide").forEach((slide, index)=>{
+      slide.addEventListener("click", function(){
+        console.log(index)
+        document.querySelector(".slide-container").style.transform = `translateX(-${index * 100}vw)`;
+      })
+    })
+
+    
+
+    
+  </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
