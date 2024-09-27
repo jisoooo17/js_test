@@ -15,6 +15,7 @@
       <h4>로그인하세요</h4>
       
 
+      <!-- form -->
       <form action="success.html">
         <div class="my-3">
           <input type="text" class="form-control" id="email">
@@ -28,6 +29,7 @@
     </div>
   </div> 
 
+  <!-- nav -->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <span class="navbar-brand">Navbar</span>
@@ -46,8 +48,10 @@
     <li class="list-group-item">And a fifth one</li>
   </ul> 
 
-  <div class="main-bg">
-
+  <!-- alert -->
+  <div class="main-bg"></div>
+  <div class="alert alert-danger">
+    <span class="timer">5</span>초 이내 구매시 사은품 증정
   </div>
 
   <script>
@@ -121,6 +125,34 @@
   </script>
 
 
+  <script>
+    // 타이머
+    let count = 5;
+    const timer = setInterval(()=>{
+      count--;
+      console.log(count)
+      document.querySelector(".timer").innerHTML = count;
+
+      if(count == 0){
+        document.querySelector(".alert").style.display = "none";
+        clearInterval(timer)
+      }
+    }, 1000);
+
+
+    // 콜백테스트
+    setTimeout(test, 1000);
+    function test(){
+      console.log("hi")
+    }
+    /*
+    setTimeout(test(), 3000)이 작동하지 않는 이유는 함수를 실행하고 그 결과값을 전달하려고 하기 때문입니다. test()는 함수를 호출하는 표현식이므로, 즉시 실행되어 결과값을 반환합니다. 그래서 setTimeout에 전달되는 것은 함수의 반환값(undefined일 가능성이 큼)이지, 함수 자체가 아닙니다.
+
+    ** 올바른 방식
+    setTimeout에 함수 자체를 전달해야 하기 때문에, test() 대신 test를 전달해야 합니다. 이렇게 하면 함수가 지연 후에 실행됩니다.
+    */
+    
+  </script>
 
 
 
