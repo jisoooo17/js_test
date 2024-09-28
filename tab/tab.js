@@ -1,14 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 버틍 0 누르면
-  // 모든 버튼에 붙은 orange 클래스 제거 
-  // 버튼 0에 orange클래스 추가
-  // 모든 div에 붙은 show 클래스 제거
-  // div 0에 show 클래스 추가
 
+  /* ------------------- Tab ------------------ */
   // forEach 사용 ver
-  const tabBtn = document.querySelectorAll(".tab-button");
-  const tabCont = document.querySelectorAll(".tab-content");
+  // const tabBtn = document.querySelectorAll(".tab-button");
+  // const tabCont = document.querySelectorAll(".tab-content");
 
   // tabBtn.forEach((item, index) => {
   //   item.addEventListener("click", function(){
@@ -25,9 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //   });
   // });
 
-
   
   // dataset 활용 ver
+  const tabBtn = document.querySelectorAll(".tab-button");
+  const tabCont = document.querySelectorAll(".tab-content");
+
   document.querySelector(".list").addEventListener("click", function(e){
     openTab(e.target.dataset.id);
     console.log(e.target.dataset.id)
@@ -47,4 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
     tabCont[index].classList.add("show");
   }
 
+  /* ------------------- Array & Object ------------------ */
+  let car = ["소나타", 50000, "white"];
+  car[3]= "할인"
+
+  let car2 = {name: "소나타", price: 50000};
+  car2.price = 9000;
+
+
+  /*
+    - array는 순서 있음
+    - 그래서 정렬 가능 & 중간에 자르기 가능 & 자료검색 추가 가능
+
+    - object는 순서 없음
+    ** 대용량 데이터의 경우에는 object가 관리 쉬움(-> 순서 안외우고 이름 기억하면 되니까)
+  */
+
+  document.querySelector(".prod").innerHTML = car2.name;
+  document.querySelector(".price").innerHTML = car2.price;
 });
