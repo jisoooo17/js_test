@@ -79,11 +79,49 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".form-select")[0].addEventListener("change", function(e){
     // let value = document.querySelectorAll(".form-select")[0].value;
     let value = e.currentTarget.value; // 이벤트 핸들러 할당된 요소
+    let sizeOpt = document.querySelectorAll(".form-select")[1];
+    let pants = [28, 29, 30];
+    let shirts = [95, 100, 105];
 
     if(value == "셔츠"){ // 
-      document.querySelectorAll(".form-select")[1].classList.remove("form-hide");
-    } else if (!(value == "셔츠")) {
-      document.querySelectorAll(".form-select")[1].classList.add("form-hide");
+      sizeOpt.classList.remove("form-hide");
+      sizeOpt.innerHTML = "";
+      shirts.forEach((item) => {
+        sizeOpt.insertAdjacentHTML("beforeend", `<option>${item}</option>`)
+      });
+    } else if (value == "모자") {
+      sizeOpt.classList.add("form-hide");
+    } else if (value == "바지"){
+      sizeOpt.classList.remove("form-hide");
+      sizeOpt.innerHTML = "";
+
+      pants.forEach((item) => {
+        sizeOpt.insertAdjacentHTML("beforeend", `<option>${item}</option>`)
+      });
+      // let pants = `<option>28</option> 
+      // <option>30</option>`;
+      // sizeOpt.innerHTML = "";
+      // sizeOpt.insertAdjacentHTML("beforeend", pants);
     }
   });
+
+  //obj 반복문 - for in
+  let obj = {name: "kim", age: 20}
+  for(let key in obj){
+    console.log(obj[key])
+  }
+
+
+  /* ------------------- HTML 생성 ------------------ */
+  // 방법 1
+  let a = document.createElement("p");
+  a.innerHTML = '안녕';
+  document.querySelector("#test").appendChild(a);
+
+  // 방법 2
+  let test2 = "<p>안녕하세요</p>";
+  document.querySelector("#test").insertAdjacentHTML("beforeend", test2);
+
+  // select option 추가
+
 });
