@@ -28,6 +28,12 @@
   <div class="container">
     <button class="btn-sort btn-danger" id="price">가격순 정렬</button>
   </div>
+  <div class="container">
+    <button class="btn-sort2 btn-danger">상품명 내림차순 정렬</button>
+  </div>
+  <div class="container">
+    <button class="btn-sort3 btn-danger">6만원 이하 정렬</button>
+  </div>
   
   <div class="container">
     <button class="btn btn-danger">더보기</button>
@@ -48,7 +54,7 @@
 
       $.get("https://codingapple1.github.io/price.json")
         .done(function(data){
-          console.log(data.price);
+          // console.log(data.price);
         })
         .fail(function(){
           console.log("실패");
@@ -166,6 +172,29 @@
     });
 
 
+    // 상품명 내림차순 정렬
+    document.querySelector(".btn-sort2").addEventListener("click", function(){
+      products.sort(function(a, b){
+        if(a.title < b.title) return 1;
+        if(a.title > b.title) return -1;
+        if(a.title === b.title) return 0;
+      });
+
+      document.querySelector(".row").innerHTML = "";
+      products.forEach((item)=>{
+        let layout= 
+          `
+          <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100">
+            <h5>${item.title}</h5>
+            <p>가격 : ${item.price}</p>
+          </div>
+          `
+          document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
+      });
+    });
+
+
 
 
     // ------------------- 필터 -------------------
@@ -177,6 +206,30 @@
     // ** sort는 원본 배열 변형함
     console.log(result);
 
+    // 60000만원 이하 상품만 보여주기
+    document.querySelector(".btn-sort3").addEventListener("click", function(){
+      document.querySelector(".row").innerHTML = "";
+
+      const prodFilter = products.filter((function(a){
+        return a.price <= 60000;
+      }));
+      console.log(prodFilter);
+      cardLayout(prodFilter);
+    });
+
+
+
+
+
+
+    // ------------------- map -------------------
+    // 배열 자료 전부 변형하려면 map
+    // ex) 달러를 원화로 변환할때 사용
+    let arrMap = [14, 2, 43, 3, 12];
+    const result2 = arrMap.map(function(a){ 
+      return a * 2; // 조건식
+    });
+    console.log(result2);
 
 
   </script> 
