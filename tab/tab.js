@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let car2 = {name: "소나타", price: 50000};
   car2.price = 9000;
-
+  // car2["name"] // []안에 변수 넣기 가능 
+  // car2.name // []안에 변수 넣기 불가
 
   /*
     - array는 순서 있음
@@ -61,6 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ** 대용량 데이터의 경우에는 object가 관리 쉬움(-> 순서 안외우고 이름 기억하면 되니까)
   */
 
-  document.querySelector(".prod").innerHTML = car2.name;
-  document.querySelector(".price").innerHTML = car2.price;
+  // 데이터 바인딩 
+  document.querySelector(".car-title").innerHTML = car2.name;
+  document.querySelector(".car-price").innerHTML = car2.price;
+
+
+  // 복합 자료형 데이터 바인딩
+  let car3 = {
+    name: "소나타",
+    price: [50000, 3000, 4000]
+  }
+  document.querySelector(".car-price").innerHTML = car3.price[0]
+
+
 });

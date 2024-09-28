@@ -10,7 +10,7 @@ body {position: relative;}
 .alert-box2 {display: none; padding: 20px; background-color: palevioletred; color: #fff; border-radius: 5px; z-index: 1;}
 
 
-.list-group {display: none;}
+.list-group {display: none; position: fixed; top: 70px; width: 100%; z-index: 1;}
 .show {display: block;}
 
 
