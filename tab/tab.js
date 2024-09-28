@@ -75,4 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".car-price").innerHTML = car3.price[0]
 
 
+  // select 인풋
+  document.querySelectorAll(".form-select")[0].addEventListener("change", function(e){
+    // let value = document.querySelectorAll(".form-select")[0].value;
+    let value = e.currentTarget.value; // 이벤트 핸들러 할당된 요소
+
+    if(value == "셔츠"){ // 
+      document.querySelectorAll(".form-select")[1].classList.remove("form-hide");
+    } else if (!(value == "셔츠")) {
+      document.querySelectorAll(".form-select")[1].classList.add("form-hide");
+    }
+  });
 });
