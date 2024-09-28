@@ -41,6 +41,7 @@
   </div>
   
   <script>
+    // ------------------- 데이터 바인딩 -------------------
     var products = [
       { id : 0, price : 70000, title : 'Blossom Dress' },
       { id : 1, price : 50000, title : 'Springfield Shirt' },
@@ -59,10 +60,40 @@
     document.querySelectorAll(".card").forEach((item, index) => {
       document.querySelectorAll(".prod-title")[index].innerHTML = products[index].title;
       document.querySelectorAll(".prod-price")[index].innerHTML = products[index].price;
-    })
+    });
 
+
+
+    // ------------------- ajax -------------------
+    // jquery
+    $.get('https://codingapple1.github.io/hello.txt')
+      .done(function(data){
+        console.log(data);
+      })
+      .fail(function(){
+        console.log("실패")
+      });
+
+      $.get("https://codingapple1.github.io/price.json")
+        .done(function(data){
+          console.log(data.price);
+        })
+        .fail(function(){
+          console.log("실패");
+        })
+
+      // javascript
+      fetch("https://codingapple1.github.io/price.json")
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
 
   </script> 
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
