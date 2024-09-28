@@ -21,21 +21,161 @@
           <h5>Card title</h5>
           <p>가격 : 70000</p>
         </div>
-        <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-        </div>
   
     </div>
   </div> 
+
+  <div class="container">
+    <button class="btn-sort btn-danger" id="price">가격순 정렬</button>
+  </div>
   
+  <div class="container">
+    <button class="btn btn-danger">더보기</button>
+  </div>
+  
+  
+
+  <script>
+    // ------------------- ajax -------------------
+    // jquery
+    $.get('https://codingapple1.github.io/hello.txt')
+      .done(function(data){
+//        console.log(data);
+      })
+      .fail(function(){
+        console.log("실패")
+      });
+
+      $.get("https://codingapple1.github.io/price.json")
+        .done(function(data){
+          console.log(data.price);
+        })
+        .fail(function(){
+          console.log("실패");
+        })
+
+      // javascript
+      fetch("https://codingapple1.github.io/price.json")
+        .then(res => res.json())
+        .then(data => {
+//          console.log(data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+  </script>
+
   <script>
     var products = [
       { id : 0, price : 70000, title : 'Blossom Dress' },
       { id : 1, price : 50000, title : 'Springfield Shirt' },
       { id : 2, price : 60000, title : 'Black Monastery' }
     ];
+    
+    // map 사용
+    document.querySelector(".row").innerHTML = "";
+    /*products.map((data, i) => {
+      console.log(i);
+      let layout = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${data.title}</h5>
+        <p>가격 : ${data.price}</p>
+      </div>`
+
+      document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
+      //console.log(item)
+    });*/
+
+    // forEach 사용
+    products.forEach((item, index) => {
+      let layout = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${item.title}</h5>
+        <p>가격 : ${item.price}</p>
+      </div>`
+
+      document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
+    });
+
+
+
+    // ------------------- 더보기 버튼 클릭 시 data get요청 -------------------
+    // 함수화한 layout 
+    const cardLayout = (data) => {
+      data.map((item) => {
+        console.log(item)
+        let layout = `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${item.title}</h5>
+          <p>가격 : ${item.price}</p>
+        </div>`
+  
+        document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
+      });
+    }
+    
+
+    let clkCount = 0; // 클릭 횟수
+    document.querySelector(".btn").addEventListener("click", function(){
+      if(clkCount == 0){
+        clkCount++;
+        fetch("https://codingapple1.github.io/js/more1.json")
+        .then(res => res.json())
+        .then(res => {
+          cardLayout(res);
+        })
+        .catch(err =>  console.log(err));
+      } else {
+        fetch("https://codingapple1.github.io/js/more2.json")
+        .then(res => res.json())
+        .then(res => {
+          cardLayout(res);
+        })
+        .catch(err =>  console.log(err));
+
+        document.querySelector(".btn").style.display = "none";
+      }
+    });
+
+
+    // ------------------- 정렬 -------------------
+    let array = [7, 2, 10, 26, 9];
+    let array2 = ["a", " b", "c"];
+
+    // 숫자 정렬
+    array.sort(function(a, b){
+      return a - b;
+    });
+    console.log(array);
+
+    // 문자 정렬
+    array2.sort();
+    console.log(array2);
+
+
+    // products 가격순 정렬
+    document.getElementById("price").addEventListener("click", function(){
+      products.sort(function(a, b){
+        return a.price - b.price
+      });
+      //console.log(products); 
+
+      document.querySelector(".row").innerHTML = "";
+      cardLayout(products);
+    });
+
+
+
+
+    // ------------------- 필터 -------------------
+    let arrFilter = [14, 2, 43, 3, 12];
+    const result = arrFilter.filter(function(a){ // filter는 변수에 저장해서 써야 함
+      return a < 4; // 조건식
+    });
+    console.log(result);
+
+
 
   </script> 
 
