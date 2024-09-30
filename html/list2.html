@@ -134,16 +134,25 @@
         
         // 구매 버튼의 형제 요소에서 상품 정보 가져오기
         let productTitle = event.target.previousElementSibling.previousElementSibling.textContent; // h5 요소의 텍스트
-
+    
+        // 장바구니가 비어 있지 않은 경우
         if(localStorage.getItem("cart") != null){
-          let 꺼낸거 = JSON.parse(localStorage.getItem("cart"));
-          꺼낸거.push(productTitle);
-          localStorage.setItem("cart", JSON.stringify(꺼낸거));
+          let cartItems = JSON.parse(localStorage.getItem("cart"));
+    
+          // 중복된 항목이 있는지 확인
+          if (!cartItems.includes(productTitle)) {
+            cartItems.push(productTitle); // 중복되지 않으면 추가
+            localStorage.setItem("cart", JSON.stringify(cartItems));
+          } else {
+            console.log("이미 장바구니에 있는 상품입니다.");
+          }
         } else {
+          // 장바구니가 비어 있으면 새로운 배열로 저장
           localStorage.setItem("cart", JSON.stringify([productTitle]));
         }
       }
     });
+    
     
 
 
