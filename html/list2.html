@@ -16,11 +16,12 @@
   <div class="container">
     <div class="row">
   
-        <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-        </div>
+      <div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>Card title</h5>
+        <p>가격 : 70000</p>
+        <button class="buy">구매</button>
+      </div>
   
     </div>
   </div> 
@@ -87,6 +88,7 @@
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${data.title}</h5>
         <p>가격 : ${data.price}</p>
+        <button class="buy">구매</button>
       </div>`
 
       document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
@@ -99,10 +101,51 @@
         <img src="https://via.placeholder.com/600" class="w-100">
         <h5>${item.title}</h5>
         <p>가격 : ${item.price}</p>
+        <button class="buy">구매</button>
       </div>`
 
       document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
     });
+
+    // ------------------- Localstorage -------------------
+    localStorage.setItem("name", "kim");
+    localStorage.getItem("name");
+    localStorage.removeItem("name");
+
+
+    let arrLs = [1, 2, 3];
+    let newArr = JSON.stringify(arrLs);
+    
+    localStorage.setItem("num", newArr);
+    let 꺼낸거 = localStorage.getItem("num");
+    JSON.parse(꺼낸거);
+    console.log(JSON.parse(꺼낸거));
+    // 수정하려면 1. 자료꺼냄 2. 꺼낸거 수정 3.다시 넣음
+
+    
+    
+
+
+
+
+    document.querySelector(".row").addEventListener("click", function(event) {
+      // 클릭된 요소가 "buy" 클래스인지 확인
+      if (event.target && event.target.classList.contains("buy")) {
+        
+        // 구매 버튼의 형제 요소에서 상품 정보 가져오기
+        let productTitle = event.target.previousElementSibling.previousElementSibling.textContent; // h5 요소의 텍스트
+
+        if(localStorage.getItem("cart") != null){
+          let 꺼낸거 = JSON.parse(localStorage.getItem("cart"));
+          꺼낸거.push(productTitle);
+          localStorage.setItem("cart", JSON.stringify(꺼낸거));
+        } else {
+          localStorage.setItem("cart", JSON.stringify([productTitle]));
+        }
+      }
+    });
+    
+
 
 
 
@@ -115,6 +158,7 @@
           <img src="https://via.placeholder.com/600" class="w-100">
           <h5>${item.title}</h5>
           <p>가격 : ${item.price}</p>
+          <button class="buy">구매</button>
         </div>`
   
         document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
@@ -153,11 +197,11 @@
     array.sort(function(a, b){
       return a - b;
     });
-    console.log(array);
+    // console.log(array);
 
     // 문자 정렬
     array2.sort();
-    console.log(array2);
+    // console.log(array2);
 
 
     // products 가격순 정렬
@@ -188,6 +232,7 @@
             <img src="https://via.placeholder.com/600" class="w-100">
             <h5>${item.title}</h5>
             <p>가격 : ${item.price}</p>
+            <button class="buy">구매</button>
           </div>
           `
           document.querySelector(".row").insertAdjacentHTML("beforeend", layout)
@@ -204,7 +249,7 @@
     });
     // ** filter는 원본 배열 변형 안함
     // ** sort는 원본 배열 변형함
-    console.log(result);
+    // console.log(result);
 
     // 60000만원 이하 상품만 보여주기
     document.querySelector(".btn-sort3").addEventListener("click", function(){
@@ -229,7 +274,7 @@
     const result2 = arrMap.map(function(a){ 
       return a * 2; // 조건식
     });
-    console.log(result2);
+    // console.log(result2);
 
 
   </script> 
