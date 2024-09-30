@@ -54,7 +54,7 @@
   <div class="slide-w">
     <div class="slide-container">
       <div class="slide-box">
-        <img src="../img/car1.png" alt="">
+        <img src="../img/car1.png" alt="" draggable="false">
       </div>
       <div class="slide-box">
         <img src="../img/car2.png" alt="">
@@ -293,6 +293,25 @@
         document.querySelector(".slide-container").style.transform = `translateX(-${index * 100}vw)`;
       });
     });
+
+
+    // 스와이프
+    let 시작좌표 = 0;
+    let mouseClk = false;
+    document.querySelector(".slide-box").addEventListener("mousedown", function(e){
+      시작좌표 = e.clientX; 
+      mouseClk = true;
+    });
+    document.querySelector(".slide-box").addEventListener("mousemove", function(e){
+      //console.log(e.clientX - 시작좌표);
+      if(mouseClk == true){
+        document.querySelector(".slide-container").style.transform = `translateX(${e.clientX - 시작좌표}px)`;
+      }
+    });
+    document.querySelector(".slide-box").addEventListener("mouseup", function(e){
+      mouseClk = false;
+    });
+
   </script>
 
   <!-- 스크롤 이벤트 -->
